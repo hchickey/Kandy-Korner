@@ -1,0 +1,18 @@
+.products {
+    display: flex;
+    flex-direction: column;
+}
+
+.product {
+    background-color: aquamarine;
+    border: 3px dotted pink;
+    padding: 0.7rem;
+    margin: 0.5rem;
+    width: 18rem;
+}
+
+.pricedButton {
+    background-color: hotpink;
+    border: 2px dotted aquamarine;
+    border-radius: 50px 50px 50px 50px;
+}
