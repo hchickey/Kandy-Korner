@@ -1,0 +1,11 @@
+.customers {
+    display: flex;
+    flex-direction: column;
+}
+
+.customer {
+    background-color: rgb(243, 230, 255);
+    border: 1px solid darkmagenta;
+    padding: 0.7rem;
+    margin: 0.5rem;
+}

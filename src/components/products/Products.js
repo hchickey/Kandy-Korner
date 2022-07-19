@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./products.css"
 
 
-export const Products = () => {
+export const Products = ({ searchTermsState }) => {
     const [candies, setCandy] = useState([])
     const [filteredCandies, setFiltered] = useState([])
     const [topPriced, setTopPriced] = useState(false)
@@ -14,7 +14,17 @@ export const Products = () => {
 
     useEffect(
         () => {
-            fetch('http://localhost:8088/products?_expand=type&_sort=name')
+            const searchedProducts = candies.filter(candy => {
+               return candy.name.toLowerCase().includes(searchTermsState.toLowerCase())
+        })
+            setFiltered(searchedProducts)
+        },
+        [ searchTermsState ]
+    )
+
+    useEffect(
+        () => {
+            fetch(`http://localhost:8088/products?_expand=type&_sort=name`)
             .then(response => response.json())
             .then((productArray) => {
                 setCandy(productArray)
@@ -67,7 +77,7 @@ export const Products = () => {
         {
             filteredCandies.map(
                 (candy) => {
-                    return <section className="product" key={'product--${product.id}'}>
+                    return <section className="product" key={`product--${candy.id}`}>
                         <header>Candy: 🍬{candy.name}</header>
                         <footer>Price: ${candy.price}</footer>
                         <footer>Product Type: {candy.type.candy}</footer>

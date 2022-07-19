@@ -30,7 +30,7 @@ return <>
     {
         locations.map(
             (location) => {
-                return <section className="location" key={'location--${location.id}'}>
+                return <section className="location" key={`location--${location.id}`}>
                     <header>{location.address}</header>
                     <footer>Size: 🏗️{location.size}</footer>
                 </section>
